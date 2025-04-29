@@ -27,15 +27,17 @@ export const Header: React.FC = () => {
       }`}
     >
       <div className="self-stretch flex items-center text-2xl w-[193px] my-auto pr-[22px] transition-transform hover:scale-105 duration-300">
-        <img
-          src="/lovable-uploads/151772f3-bf5d-4b20-b5d6-6ec098eb2609.png"
-          className="h-8 object-contain"
-          alt="prodejhudbu.cz logo"
-        />
+        <Link to="/">
+          <img
+            src="/lovable-uploads/151772f3-bf5d-4b20-b5d6-6ec098eb2609.png"
+            className="h-8 object-contain"
+            alt="prodejhudbu.cz logo"
+          />
+        </Link>
       </div>
       <nav className="self-stretch flex min-w-60 items-center gap-8 text-sm text-neutral-100 flex-wrap my-auto max-md:max-w-full">
         <Link
-          to="#how-it-works"
+          to="/jak-to-funguje"
           className="self-stretch gap-2 my-auto py-1.5 hover:text-[rgba(45,175,229,1)] transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-[rgba(45,175,229,1)] after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
         >
           Jak to funguje?

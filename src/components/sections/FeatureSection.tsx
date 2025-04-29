@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { CustomButton } from "@/components/ui/CustomButton";
+import { Link } from "react-router-dom";
 import { FreeFeatureContent, StoresFeatureContent, CzechFeatureContent, YoutubeFeatureContent } from "@/components/sections/FeatureContent";
 
 interface FeatureSectionProps {
@@ -86,12 +87,14 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       <p className="text-lg font-normal leading-[25px] mt-8 max-md:max-w-full">
         {description}
       </p>
-      <CustomButton
-        variant="medium"
-        className="border-neutral-100 border text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
-      >
-        Více informací
-      </CustomButton>
+      <Link to="/jak-to-funguje">
+        <CustomButton
+          variant="medium"
+          className="border-neutral-100 border text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
+        >
+          Více informací
+        </CustomButton>
+      </Link>
     </div>
   );
 
