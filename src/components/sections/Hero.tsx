@@ -35,11 +35,14 @@ export const Hero: React.FC = () => {
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,0.9)]"></div>
         
-        {/* Animated diagonal stripes overlay - mirrored horizontally */}
+        {/* New fade-out gradient overlay - positioned above background but below content */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.8)] via-[rgba(0,0,0,0.3)] to-transparent z-[1]"></div>
+        
+        {/* Animated diagonal stripes overlay with blur effect */}
         <div className={`absolute inset-0 overflow-hidden ${
-          imageLoaded ? "opacity-30" : "opacity-0"
-        } transition-opacity duration-1000`}>
-          <div className="absolute top-0 right-0 w-[200%] h-[200%] -rotate-45 origin-top-right">
+          imageLoaded ? "opacity-40" : "opacity-0"
+        } transition-opacity duration-1000 z-[1]`}>
+          <div className="absolute top-0 right-0 w-[200%] h-[200%] -rotate-45 origin-top-right blur-[15px]">
             {[...Array(4)].map((_, i) => (
               <div 
                 key={i} 
