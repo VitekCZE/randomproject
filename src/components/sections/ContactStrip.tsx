@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button } from "@/components/ui/Button";
+import { CustomButton } from "@/components/ui/CustomButton";
 
 export const ContactStrip: React.FC = () => {
   return (
@@ -11,12 +11,12 @@ export const ContactStrip: React.FC = () => {
       <h2 className="text-neutral-100 text-[43px] font-[612] leading-none tracking-[-0.65px] self-stretch flex-1 shrink basis-20 my-auto max-md:max-w-full">
         Ready to get your music out there?
       </h2>
-      <Button
+      <CustomButton
         variant="large-white"
         className="self-stretch text-[rgba(45,175,229,1)] hover:bg-[rgba(45,175,229,0.1)] transition-all duration-300 hover:shadow-lg"
       >
         Contact Us
-      </Button>
+      </CustomButton>
     </section>
   );
 };

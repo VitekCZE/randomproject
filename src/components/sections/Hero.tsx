@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { CustomButton } from "@/components/ui/CustomButton";
 
 export const Hero: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -38,12 +38,12 @@ export const Hero: React.FC = () => {
           <div className={`flex w-full flex-col items-stretch text-neutral-100 leading-[1.1] mt-10 transition-all duration-1000 delay-600 ${
             imageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           } max-md:max-w-full`}>
-            <Button
+            <CustomButton
               variant="large"
               className="border-neutral-100 border text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors w-fit"
             >
               Spustit prodej
-            </Button>
+            </CustomButton>
             <div className="text-sm font-normal mt-4 max-md:max-w-full">
               Zdarma a bez poplatků
             </div>

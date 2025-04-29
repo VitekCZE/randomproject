@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Button } from "@/components/ui/Button";
+import { CustomButton } from "@/components/ui/CustomButton";
 
 interface FeatureSectionProps {
   title: string;
@@ -30,12 +30,12 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       <p className="text-lg font-normal leading-[25px] mt-8 max-md:max-w-full">
         {description}
       </p>
-      <Button
+      <CustomButton
         variant="medium"
         className="text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
       >
         Více informací
-      </Button>
+      </CustomButton>
     </div>
   );
 

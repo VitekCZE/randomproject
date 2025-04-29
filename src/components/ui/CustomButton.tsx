@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const CustomButton: React.FC<ButtonProps> = ({
   variant = "medium",
   children,
   className,
