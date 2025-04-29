@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,6 +22,12 @@ export const Header: React.FC = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    // Prevent body scroll when menu is open
+    if (!isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   };
 
   return (
@@ -77,65 +82,66 @@ export const Header: React.FC = () => {
         </Link>
       </nav>
 
-      {/* Mobile Navigation */}
-      <div className="md:hidden flex items-center">
-        <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <SheetTrigger asChild>
-            <button 
-              onClick={toggleMenu} 
-              className="text-neutral-100 focus:outline-none"
-              aria-label="Toggle menu"
+      {/* Mobile Menu Button */}
+      <div className="md:hidden">
+        <button 
+          onClick={toggleMenu} 
+          className="relative z-50 w-10 h-10 flex items-center justify-center focus:outline-none text-neutral-100"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMenuOpen ? (
+            <X className="h-6 w-6 transition-all duration-300 ease-in-out transform rotate-90" />
+          ) : (
+            <Menu className="h-6 w-6 transition-all duration-300 ease-in-out" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Navigation Overlay */}
+      <div 
+        className={`fixed inset-0 bg-[rgba(29,29,27,0.95)] backdrop-blur-md z-40 transition-transform duration-500 ease-in-out ${
+          isMenuOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <nav className="flex flex-col items-center justify-center h-full">
+          <div className="flex flex-col items-center gap-8 text-xl font-atyp font-semibold w-full">
+            <Link
+              to="/jak-to-funguje"
+              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
+              onClick={toggleMenu}
             >
-              {isMenuOpen ? (
-                <X size={24} />
-              ) : (
-                <Menu size={24} />
-              )}
-            </button>
-          </SheetTrigger>
-          <SheetContent 
-            side="right" 
-            className="w-[80%] bg-[rgba(29,29,27,0.98)] text-neutral-100 flex flex-col pt-20"
-          >
-            <div className="flex flex-col gap-6 text-xl font-atyp font-semibold">
-              <Link
-                to="/jak-to-funguje"
-                className="px-4 py-3 hover:bg-[rgba(45,175,229,0.2)] transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Jak to funguje?
-              </Link>
-              <Link
-                to="#youtube-revenue"
-                className="px-4 py-3 hover:bg-[rgba(45,175,229,0.2)] transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Příjmy z YouTube
-              </Link>
-              <Link
-                to="#faq"
-                className="px-4 py-3 hover:bg-[rgba(45,175,229,0.2)] transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                FAQ a nápověda
-              </Link>
-              <Link
-                to="#contacts"
-                className="px-4 py-3 hover:bg-[rgba(45,175,229,0.2)] transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Kontakty
-              </Link>
-              <Link
-                to="/client"
-                className="mt-4 mx-4 bg-[rgba(45,175,229,1)] text-center py-3 hover:bg-[rgba(45,175,229,0.8)] transition-all"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Klientská zóna
-              </Link>
-            </div>
-          </SheetContent>
-        </Sheet>
+              Jak to funguje?
+            </Link>
+            <Link
+              to="#youtube-revenue"
+              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
+              onClick={toggleMenu}
+            >
+              Příjmy z YouTube
+            </Link>
+            <Link
+              to="#faq"
+              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
+              onClick={toggleMenu}
+            >
+              FAQ a nápověda
+            </Link>
+            <Link
+              to="#contacts"
+              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
+              onClick={toggleMenu}
+            >
+              Kontakty
+            </Link>
+            <Link
+              to="/client"
+              className="mt-6 bg-[rgba(45,175,229,1)] text-neutral-100 px-10 py-3 border border-[rgba(45,175,229,1)] hover:bg-[rgba(45,175,229,0.8)] transition-all duration-300"
+              onClick={toggleMenu}
+            >
+              Klientská zóna
+            </Link>
+          </div>
+        </nav>
       </div>
     </header>
   );
