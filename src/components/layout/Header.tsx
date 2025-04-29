@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
           />
         </Link>
       </div>
-      <nav className="self-stretch flex min-w-60 items-center gap-8 text-sm text-neutral-100 flex-wrap my-auto max-md:max-w-full">
+      <nav className="self-stretch flex min-w-60 items-center gap-8 text-sm text-neutral-100 font-atyp flex-wrap my-auto max-md:max-w-full">
         <Link
           to="/jak-to-funguje"
           className="self-stretch gap-2 my-auto py-1.5 hover:text-[rgba(45,175,229,1)] transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-[rgba(45,175,229,1)] after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
         </Link>
         <Link
           to="/client"
-          className="self-stretch bg-[rgba(45,175,229,1)] border gap-2 my-auto px-6 py-3 border-[rgba(45,175,229,1)] border-solid hover:bg-[rgba(45,175,229,0.8)] transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1"
+          className="self-stretch bg-[rgba(45,175,229,1)] border gap-2 my-auto px-6 py-3 border-[rgba(45,175,229,1)] border-solid hover:bg-[rgba(45,175,229,0.8)] transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 font-atyp"
         >
           Klientská zóna
         </Link>
