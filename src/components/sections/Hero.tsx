@@ -33,10 +33,10 @@ export const Hero: React.FC = () => {
         />
         
         {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,0.9)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,1)]"></div>
         
         {/* New fade-out gradient overlay - positioned above background but below content */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.8)] via-[rgba(0,0,0,0.3)] to-transparent z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,0.8)] via-[rgba(29,29,27,0.3)] to-transparent z-[1]"></div>
         
         {/* Animated diagonal stripes overlay with blur effect */}
         <div className={`absolute inset-0 overflow-hidden ${
