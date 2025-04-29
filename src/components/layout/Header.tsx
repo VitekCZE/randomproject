@@ -119,14 +119,7 @@ export const Header: React.FC = () => {
             >
               Příjmy z YouTube
             </Link>
-            <Link
-              to="#faq"
-              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
-              onClick={toggleMenu}
-            >
-              FAQ a nápověda
-            </Link>
-            {/* Contacts link removed */}
+            {/* FAQ link removed */}
           </div>
         </nav>
       </div>
