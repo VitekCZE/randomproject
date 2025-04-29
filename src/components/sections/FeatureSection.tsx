@@ -74,7 +74,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     <section
       ref={sectionRef}
       id={id}
-      className="z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap py-24 max-md:py-16 mb-12 mx-auto"
+      className={`z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap py-24 max-md:py-16 mb-12 mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
     >
       {imagePosition === "left" ? (
         <>

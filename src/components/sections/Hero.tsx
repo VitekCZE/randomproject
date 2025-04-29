@@ -1,19 +1,29 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CustomButton } from "@/components/ui/CustomButton";
 
 export const Hero: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // Trigger animation after component mounts
     setTimeout(() => {
       setImageLoaded(true);
     }, 300);
+
+    // Add scroll animation
+    setIsVisible(true);
   }, []);
 
   return (
-    <section className="relative z-0 max-w-full w-full h-screen min-h-[700px] pt-24">
+    <section 
+      ref={heroRef} 
+      className={`relative z-0 max-w-full w-full h-screen min-h-[700px] pt-24 transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="absolute inset-0 overflow-hidden">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/4edd626cfeaebb1084cc0a8794214d5ab7909ac6?placeholderIfAbsent=true"
@@ -44,7 +54,9 @@ export const Hero: React.FC = () => {
         </div>
       </div>
       <div className="container mx-auto h-full relative z-10">
-        <div className="absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8">
+        <div className={`absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8 transition-all duration-1000 delay-500 ease-out ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>
           <h1 className="text-neutral-100 text-[75px] font-[612] leading-[75px] tracking-[-1.13px] max-md:max-w-full max-md:text-[40px] max-md:leading-[44px]">
             Prodávejte svou hudbu digitálně po celém světě!
           </h1>

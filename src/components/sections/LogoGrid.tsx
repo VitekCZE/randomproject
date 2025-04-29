@@ -68,9 +68,13 @@ export const LogoGrid: React.FC = () => {
   return (
     <section 
       ref={containerRef}
-      className="z-0 w-full max-w-[1440px] py-24 px-8 max-md:py-16 mb-12"
+      className={`z-0 w-full max-w-[1440px] py-24 px-8 max-md:py-16 mb-12 transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      }`}
     >
-      <h2 className="text-neutral-100 text-center text-2xl font-[612] leading-[1.3] tracking-[-0.36px] mb-16 max-md:mb-10">
+      <h2 className={`text-neutral-100 text-center text-2xl font-[612] leading-[1.3] tracking-[-0.36px] mb-16 max-md:mb-10 transition-all duration-700 delay-300 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}>
         Prodávejte svou hudbu v
       </h2>
       <div 

@@ -1,7 +1,30 @@
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const ArtistGrid: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const artists = [
     { id: 1, image: "https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/2597359ca39149ba8cb2dfec4b4bb7c2bcdbfd09?placeholderIfAbsent=true", name: "Artist Name" },
     { id: 2, image: "https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/ae051779007d92f38ecf5664d516c84b14a3cbbc?placeholderIfAbsent=true", name: "Artist Name" },
@@ -13,13 +36,22 @@ export const ArtistGrid: React.FC = () => {
   ];
 
   return (
-    <section className="z-0 flex w-full max-w-full flex-col items-stretch py-24 px-8 max-md:py-16 mb-12">
+    <section 
+      ref={sectionRef}
+      className={`z-0 flex w-full max-w-full flex-col items-stretch py-24 px-8 max-md:py-16 mb-12 transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      }`}
+    >
       <div className="container mx-auto">
-        <h2 className="text-neutral-100 text-[57px] font-[612] leading-[57px] tracking-[-0.85px] text-center self-center w-[846px] max-w-full mx-auto mb-20 max-md:mb-12 max-md:text-[40px] max-md:leading-[45px]">
+        <h2 className={`text-neutral-100 text-[57px] font-[612] leading-[57px] tracking-[-0.85px] text-center self-center w-[846px] max-w-full mx-auto mb-20 max-md:mb-12 max-md:text-[40px] max-md:leading-[45px] transition-all duration-700 delay-300 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}>
           <span style={{ color: "rgba(245,245,245,1)" }}>Více než 250 kapel</span>{" "}
           a interpretů už využilo Prodejhudbu.cz
         </h2>
-        <div className="relative overflow-x-hidden">
+        <div className={`relative overflow-x-hidden transition-all duration-1000 delay-500 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}>
           <div className="flex w-full items-center animate-carousel hover:pause-animation">
             {/* Double the items for seamless looping */}
             {[...artists, ...artists].map((artist, index) => (
