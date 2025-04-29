@@ -133,13 +133,7 @@ export const Header: React.FC = () => {
             >
               Kontakty
             </Link>
-            <Link
-              to="/client"
-              className="mt-6 bg-[rgba(45,175,229,1)] text-neutral-100 px-10 py-3 border border-[rgba(45,175,229,1)] hover:bg-[rgba(45,175,229,0.8)] transition-all duration-300"
-              onClick={toggleMenu}
-            >
-              Klientská zóna
-            </Link>
+            {/* Removed Klientská zóna button from here */}
           </div>
         </nav>
       </div>
