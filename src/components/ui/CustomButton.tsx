@@ -22,7 +22,7 @@ export const CustomButton: React.FC<ButtonProps> = ({
     large:
       "border-neutral-100 border text-lg tracking-[0.36px] px-8 py-4 border-solid",
     medium:
-      "text-sm tracking-[0.28px] leading-[1.1] px-6 py-3",
+      "border-neutral-100 border text-sm tracking-[0.28px] leading-[1.1] px-6 py-3",
     "large-white":
       "bg-neutral-100 text-lg tracking-[0.36px] leading-[1.1] px-8 py-4",
   };

@@ -63,19 +63,13 @@ const Index: React.FC = () => {
 
         <ArtistGrid />
 
-        <div className="container mx-auto relative px-8 py-24">
+        <div className="container mx-auto relative px-8 py-24 mb-12">
           <Testimonials />
         </div>
 
         <ContactStrip />
 
         <Footer />
-
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/fe68f31b7aecfd883db946f99051914fc8f8acee?placeholderIfAbsent=true"
-          className="aspect-[1] object-contain w-24 shadow-[0px_0px_40px_rgba(29,29,27,1)] absolute z-0 h-24 rounded-[50%] right-[650px] top-[2406px]"
-          alt="Decorative element"
-        />
       </main>
     </div>
   );

@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 
 export const FreeFeatureContent: React.FC = () => {
   return (
@@ -11,81 +12,123 @@ export const FreeFeatureContent: React.FC = () => {
 };
 
 export const StoresFeatureContent: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const musicServices = [
+    { 
+      id: 1, 
+      name: "TikTok", 
+      icon: "/lovable-uploads/fed2c437-0633-4f72-afed-7e4025db39af.png",
+      position: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2" 
+    },
+    { 
+      id: 2, 
+      name: "YouTube", 
+      icon: "/lovable-uploads/11c3dfd1-fc1c-4bbb-96d2-945965565cef.png",
+      position: "top-1/4 right-0 translate-x-1/2" 
+    },
+    { 
+      id: 3, 
+      name: "SoundCloud", 
+      icon: "/lovable-uploads/94e56396-37e1-4f0e-96dc-2aefff7c4853.png",
+      position: "bottom-0 right-1/4 translate-y-1/2" 
+    },
+    { 
+      id: 4, 
+      name: "Amazon Music", 
+      icon: "/lovable-uploads/8fab1bdd-d319-42a8-8390-80fe90853dcd.png",
+      position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2" 
+    },
+    { 
+      id: 5, 
+      name: "Tidal", 
+      icon: "/lovable-uploads/0bf63c94-6768-4dc9-843c-70c0e7eb06bc.png",
+      position: "bottom-1/4 left-0 -translate-x-1/2" 
+    },
+    { 
+      id: 6, 
+      name: "Spotify", 
+      icon: "/lovable-uploads/5116c6f3-46e9-4c70-9b3e-90ddd071f679.png",
+      position: "top-1/4 left-0 -translate-x-1/2" 
+    }
+  ];
+
   return (
-    <div className="bg-[rgba(29,29,27,1)] flex flex-col items-stretch justify-center p-[51px] max-md:max-w-full max-md:px-5">
-      <div className="border flex w-full flex-col pr-20 rounded-[50%] border-[rgba(245,245,245,0.2)] border-dashed max-md:pr-5">
-        <div className="self-center z-10 flex mt-[-18px] w-[217px] max-w-full items-stretch gap-5 justify-between">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/bef6c1bb5e8a2a81651efcfc3cba47c96e4f9c18?placeholderIfAbsent=true"
-            className="aspect-[0.9] object-contain w-11 shrink-0 my-auto"
-            alt="Music service icon"
-          />
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/6fd8b9d08152f7e1bd6451cfe5161ce0da9df245?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-[77px] shrink-0"
-            alt="Music service icon"
-          />
-        </div>
-        <div className="z-10 flex mb-[-19px] w-full gap-5 justify-between mt-[47px] max-md:mt-10 max-md:mb-2.5">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/c791ac68164fa4708d5ae534864d16aa943e510a?placeholderIfAbsent=true"
-            className="aspect-[1] object-contain w-[49px] shrink-0"
-            alt="Music service icon"
-          />
-          <div className="flex items-start gap-[11px] overflow-hidden mt-2 pt-[53px] pb-3.5 px-4 rounded-[20px_20px_0px_0px] border-[rgba(98,98,97,1)] border-solid border-[7px]">
-            <div className="flex flex-col">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/79dea6af83cd50b47f2c15605d3d57ed169cb205?placeholderIfAbsent=true"
-                className="aspect-[0.99] object-contain w-[129px] shadow-[0px_4px_9px_rgba(0,0,0,0.2)] max-w-full"
-                alt="Album cover"
-              />
-              <div className="text-neutral-100 text-sm font-semibold mt-[22px] max-md:ml-1">
-                Clarinet Factory
-              </div>
-              <div className="self-stretch flex w-full flex-col mt-[11px] pl-1 pr-[34px] max-md:pr-5">
-                <div className="flex items-stretch gap-1 text-[8px] text-neutral-100 font-semibold">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/eb0228f99b83cc8dd64ca300aa4626c0ccebb2b2?placeholderIfAbsent=true"
-                    className="aspect-[1.18] object-contain w-[13px] shrink-0 rounded-[13px]"
-                    alt="Artist icon"
-                  />
-                  <div>Dunaj, Zrní, Tata Bojs</div>
-                </div>
-                <div className="flex items-stretch gap-[9px] text-[7px] text-[rgba(179,179,179,1)] font-medium text-center mt-1.5">
-                  <div>Album </div>
-                  <div>2024</div>
-                </div>
-              </div>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/ecccdac7554711dbb3809888df965a04549739a8?placeholderIfAbsent=true"
-                className="aspect-[3.57] object-contain w-[75px] mt-1.5"
-                alt="Rating"
-              />
-              <div className="text-neutral-100 text-[9px] font-medium mt-2 max-md:ml-[3px]">
-                Kapej sůl
-              </div>
-              <div className="flex items-stretch gap-[3px] text-[7px] text-[rgba(179,179,179,1)] font-medium max-md:ml-1">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/7f3509ed8f390470aee6aeba4d2e73439b2ec2b9?placeholderIfAbsent=true"
-                  className="aspect-[1] object-contain w-[7px] shrink-0"
-                  alt="Artist icon"
-                />
-                <div>Dunaj, Zrní, Tata Bojs</div>
-              </div>
+    <div 
+      ref={containerRef}
+      className="bg-[rgba(29,29,27,1)] flex flex-col items-center justify-center p-[51px] max-md:max-w-full max-md:px-5"
+    >
+      <div className={`relative w-[450px] h-[450px] max-w-full ${isVisible ? 'animate-rotate-circle' : ''} animation-duration-60s`}>
+        {/* Circle border */}
+        <div className="absolute inset-0 rounded-full border border-[rgba(245,245,245,0.2)] border-dashed"></div>
+        
+        {/* Center content - Phone mockup */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[200px] bg-[rgba(46,46,44,1)] rounded-[20px_20px_0_0] overflow-hidden border-[rgba(98,98,97,1)] border-solid border-[7px]">
+          <div className="p-4">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/79dea6af83cd50b47f2c15605d3d57ed169cb205?placeholderIfAbsent=true"
+              className="w-full aspect-square object-contain shadow-[0px_4px_9px_rgba(0,0,0,0.2)]"
+              alt="Clarinet Factory album cover"
+            />
+            <div className="text-neutral-100 text-sm font-semibold mt-4">
+              Clarinet Factory
             </div>
-            <div className="flex flex-col mt-[183px] max-md:mt-10">
-              <div className="bg-[rgba(29,185,84,1)] flex items-stretch gap-[3px] w-[31px] h-[31px] px-1.5 py-2.5 rounded-[50%]">
-                <div className="bg-black flex w-[3px] shrink-0 h-[11px]" />
-                <div className="bg-black flex w-[3px] shrink-0 h-[11px]" />
-              </div>
+            <div className="flex items-center gap-1 text-[8px] text-neutral-100 font-semibold mt-2">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/7293ab65f60c92bc1180b1630b9854d92db7cafd?placeholderIfAbsent=true"
-                className="aspect-[1] object-contain w-[15px] ml-5 mt-[27px] max-md:ml-2.5"
-                alt="Control icon"
+                src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/eb0228f99b83cc8dd64ca300aa4626c0ccebb2b2?placeholderIfAbsent=true"
+                className="aspect-[1.18] object-contain w-[13px] shrink-0 rounded-[13px]"
+                alt="Artist icon"
               />
+              <div>Dunaj, Zrní, Tata Bojs</div>
+            </div>
+            <div className="flex gap-1 text-[7px] text-[rgba(179,179,179,1)] mt-1">
+              <div>Album </div>
+              <div>2024</div>
+            </div>
+            <div className="mt-4 flex justify-center">
+              <div className="bg-[rgba(29,185,84,1)] flex items-center justify-center w-[31px] h-[31px] rounded-full">
+                <div className="bg-black w-[3px] h-[11px] mx-[1px]"></div>
+                <div className="bg-black w-[3px] h-[11px] mx-[1px]"></div>
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Music service icons around the circle */}
+        {musicServices.map((service) => (
+          <div 
+            key={service.id}
+            className={`absolute ${service.position} w-12 h-12 flex items-center justify-center rounded-full bg-[rgba(29,29,27,1)] z-10 transform hover:scale-125 transition-transform duration-300 ${isVisible ? 'animate-icon-pop' : ''}`} 
+            style={{ animationDelay: `${service.id * 0.3}s` }}
+          >
+            <img 
+              src={service.icon} 
+              alt={service.name} 
+              className="w-8 h-8 object-contain"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

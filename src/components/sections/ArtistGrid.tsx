@@ -13,19 +13,19 @@ export const ArtistGrid: React.FC = () => {
   ];
 
   return (
-    <section className="z-0 flex w-full max-w-full flex-col items-stretch py-24 px-8 max-md:py-16">
+    <section className="z-0 flex w-full max-w-full flex-col items-stretch py-24 px-8 max-md:py-16 mb-12">
       <div className="container mx-auto">
         <h2 className="text-neutral-100 text-[57px] font-[612] leading-[57px] tracking-[-0.85px] text-center self-center w-[846px] max-w-full mx-auto mb-20 max-md:mb-12 max-md:text-[40px] max-md:leading-[45px]">
           <span style={{ color: "rgba(245,245,245,1)" }}>Více než 250 kapel</span>{" "}
           a interpretů už využilo Prodejhudbu.cz
         </h2>
         <div className="relative overflow-x-hidden">
-          <div className="flex w-full gap-1 items-center animate-carousel hover:pause-animation">
+          <div className="flex w-full items-center animate-carousel hover:pause-animation">
             {/* Double the items for seamless looping */}
             {[...artists, ...artists].map((artist, index) => (
               <div
                 key={`${artist.id}-${index}`}
-                className="overflow-hidden text-lg text-neutral-100 font-[612] tracking-[-0.27px] leading-[1.3] grow-0 shrink-0 w-[199px] group cursor-pointer"
+                className="flex-shrink-0 w-[199px] group cursor-pointer overflow-hidden"
               >
                 <div className="relative aspect-[0.718] w-full">
                   <img
@@ -33,9 +33,9 @@ export const ArtistGrid: React.FC = () => {
                     className="absolute h-full w-full object-cover inset-0"
                     alt={artist.name}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300 group-hover:bg-opacity-0"></div>
+                  <div className="absolute inset-0 bg-black bg-opacity-40 opacity-100 transition-opacity duration-300 group-hover:opacity-0"></div>
                   <div className="absolute bottom-0 left-0 w-full p-4 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                    <p className="text-white">{artist.name}</p>
+                    <p className="text-white text-lg font-[612] tracking-[-0.27px] leading-[1.3]">{artist.name}</p>
                   </div>
                 </div>
               </div>

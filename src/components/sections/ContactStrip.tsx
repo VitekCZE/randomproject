@@ -12,8 +12,8 @@ export const ContactStrip: React.FC = () => {
         Ready to get your music out there?
       </h2>
       <CustomButton
-        variant="large-white"
-        className="self-stretch text-[rgba(45,175,229,1)] hover:bg-[rgba(45,175,229,0.1)] transition-all duration-300 hover:shadow-lg"
+        variant="medium"
+        className="border-neutral-100 border text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(45,175,229,1)] transition-all duration-300"
       >
         Contact Us
       </CustomButton>

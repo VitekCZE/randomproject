@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { CustomButton } from "@/components/ui/CustomButton";
 
 interface FeatureSectionProps {
@@ -19,8 +19,39 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   imagePosition = "right",
   id,
 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const textContent = (
-    <div className="self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] flex-1 shrink basis-[0%] my-auto px-8 max-md:max-w-full">
+    <div 
+      className={`self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] flex-1 shrink basis-[0%] my-auto px-8 transition-all duration-1000 ease-out ${
+        isVisible
+          ? "opacity-100 translate-x-0"
+          : imagePosition === "right"
+            ? "opacity-0 -translate-x-10"
+            : "opacity-0 translate-x-10"
+      } max-md:max-w-full`}
+    >
       <h2
         className="text-[43px] leading-[43px] max-md:max-w-full"
         style={{ color: titleColor }}
@@ -32,7 +63,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       </p>
       <CustomButton
         variant="medium"
-        className="text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
+        className="border-neutral-100 border text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
       >
         Více informací
       </CustomButton>
@@ -41,12 +72,15 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
 
   return (
     <section
+      ref={sectionRef}
       id={id}
-      className="z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap py-24 max-md:py-16"
+      className="z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap py-24 max-md:py-16 mb-12"
     >
       {imagePosition === "left" ? (
         <>
-          <div className="self-stretch min-w-60 w-[522px] my-auto max-md:max-w-full">
+          <div className={`self-stretch min-w-60 w-[522px] my-auto transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          } max-md:max-w-full`}>
             {imageContent}
           </div>
           {textContent}
@@ -54,7 +88,9 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       ) : (
         <>
           {textContent}
-          <div className="self-stretch min-w-60 w-[522px] my-auto max-md:max-w-full">
+          <div className={`self-stretch min-w-60 w-[522px] my-auto transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          } max-md:max-w-full`}>
             {imageContent}
           </div>
         </>
