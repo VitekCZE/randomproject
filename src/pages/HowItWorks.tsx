@@ -68,7 +68,7 @@ const HowItWorks: React.FC = () => {
       <main className="relative flex w-full flex-col overflow-hidden items-center">
         {/* Hero Section with new image */}
         <section className="w-full h-[500px] bg-center bg-cover relative flex items-center animate-fade-in" 
-          style={{ backgroundImage: "url('/lovable-uploads/075052c0-aeb5-4f30-9d90-a7eb91eb2cd9.png')" }}>
+          style={{ backgroundImage: "url('/lovable-uploads/eb93c68b-10d7-438a-9f03-e604bb88fdd0.png')" }}>
           <div className="absolute inset-0 bg-black opacity-60"></div>
           <div className="container mx-auto px-8 relative z-10">
             <h1 className="text-6xl font-bold text-white mb-8 animate-slide-up">Jak to funguje</h1>
