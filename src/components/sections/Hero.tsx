@@ -25,15 +25,15 @@ export const Hero: React.FC = () => {
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,0.9)]"></div>
         
-        {/* Animated diagonal stripes overlay */}
+        {/* Animated diagonal stripes overlay - modified to come from left to right with 30% opacity */}
         <div className={`absolute inset-0 overflow-hidden ${
-          imageLoaded ? "opacity-60" : "opacity-0"
+          imageLoaded ? "opacity-30" : "opacity-0"
         } transition-opacity duration-1000`}>
-          <div className="absolute top-0 right-0 w-[200%] h-[200%] -rotate-45 origin-top-right">
+          <div className="absolute top-0 left-0 w-[200%] h-[200%] rotate-45 origin-top-left">
             {[...Array(4)].map((_, i) => (
               <div 
                 key={i} 
-                className={`absolute h-[100px] bg-white opacity-60 w-full transform translate-y-[-100%] animate-stripe-slide`} 
+                className={`absolute h-[100px] bg-white w-full transform translate-y-[-100%] animate-stripe-slide`} 
                 style={{
                   top: `${i * 250}px`,
                   animationDelay: `${i * 0.2}s`,
