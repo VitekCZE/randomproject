@@ -1,12 +1,15 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { CustomButton } from "@/components/ui/CustomButton";
+import { FreeFeatureContent, StoresFeatureContent, CzechFeatureContent, YoutubeFeatureContent } from "@/components/sections/FeatureContent";
 
 interface FeatureSectionProps {
   title: string;
   description: string;
   titleColor: string;
   id?: string;
+  imagePosition?: "left" | "right";
+  contentType: "free" | "stores" | "czech" | "youtube";
 }
 
 export const FeatureSection: React.FC<FeatureSectionProps> = ({
@@ -14,6 +17,8 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   description,
   titleColor,
   id,
+  imagePosition = "left",
+  contentType,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -38,12 +43,37 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     };
   }, []);
 
+  const renderContent = () => {
+    switch (contentType) {
+      case "free":
+        return <FreeFeatureContent />;
+      case "stores":
+        return <StoresFeatureContent />;
+      case "czech":
+        return <CzechFeatureContent />;
+      case "youtube":
+        return <YoutubeFeatureContent />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section
       ref={sectionRef}
       id={id}
       className={`z-0 flex w-full max-w-[1177px] items-center py-24 max-md:py-16 mb-12 mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
     >
+      {imagePosition === "left" && (
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+          }`}
+        >
+          {renderContent()}
+        </div>
+      )}
+      
       <div 
         className={`self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] w-full my-auto px-8 transition-all duration-1000 ease-out ${
           isVisible
@@ -67,6 +97,16 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           Více informací
         </CustomButton>
       </div>
+
+      {imagePosition === "right" && (
+        <div
+          className={`transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          }`}
+        >
+          {renderContent()}
+        </div>
+      )}
     </section>
   );
 };
