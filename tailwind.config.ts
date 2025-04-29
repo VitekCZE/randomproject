@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -21,6 +20,9 @@ export default {
 		extend: {
 			fontFamily: {
 				'atyp': ['Atyp BL', 'sans-serif'],
+			},
+			fontWeight: {
+				'atyp': '600',
 			},
 			colors: {
 				border: 'hsl(var(--border))',

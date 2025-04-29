@@ -60,17 +60,17 @@ export const Hero: React.FC = () => {
         <div className={`absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8 transition-all duration-1000 delay-500 ease-out ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
-          <h1 className="text-neutral-100 text-[75px] font-atyp font-[612] leading-[75px] tracking-[-1.13px] max-md:max-w-full max-md:text-[40px] max-md:leading-[44px]">
+          <h1 className="text-neutral-100 text-[75px] font-atyp font-semibold leading-[75px] tracking-[-1.13px] max-md:max-w-full max-md:text-[40px] max-md:leading-[44px]">
             Prodávejte svou hudbu digitálně po celém světě!
           </h1>
           <div className="flex w-full flex-col items-stretch text-neutral-100 leading-[1.1] mt-10 max-md:max-w-full">
             <CustomButton
               variant="large"
-              className="border-neutral-100 border text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors w-fit font-atyp"
+              className="border-neutral-100 border text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors w-fit font-atyp font-semibold"
             >
               Spustit prodej
             </CustomButton>
-            <div className="text-sm font-normal font-atyp mt-4 max-md:max-w-full">
+            <div className="text-sm font-atyp font-normal mt-4 max-md:max-w-full">
               Zdarma a bez poplatků
             </div>
           </div>
