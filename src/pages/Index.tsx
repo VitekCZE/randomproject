@@ -16,7 +16,7 @@ import {
 
 const Index: React.FC = () => {
   return (
-    <div className="max-md:pl-5" style={{ space: 0 }}>
+    <div className="max-md:pl-5">
       <div className="gap-5 flex max-md:flex-col max-md:items-stretch">
         <div className="w-[27%] max-md:w-full max-md:ml-0">
           <div className="text-neutral-100 text-lg font-normal leading-[1.3] z-10 mr-[-133px] mt-[4554px] max-md:max-w-full max-md:mt-10">
