@@ -26,16 +26,11 @@ export const Header: React.FC = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="self-stretch flex items-stretch text-2xl text-[#faba00] w-[193px] my-auto pr-[22px] transition-transform hover:scale-105 duration-300">
-        <div className="mr-[-49px] grow">
-          <span className="transition-colors duration-300" style={{ color: "rgba(45,175,229,1)" }}>prodej</span>
-          <span className="transition-colors duration-300" style={{ color: "rgba(245,245,245,1)" }}>hudbu </span>{" "}
-          <span className="transition-colors duration-300" style={{ color: "rgba(45,175,229,1)" }}>cz</span>
-        </div>
+      <div className="self-stretch flex items-center text-2xl w-[193px] my-auto pr-[22px] transition-transform hover:scale-105 duration-300">
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/d7987b3707d1f8338feca6ac3ffc29c642696ee4?placeholderIfAbsent=true"
-          className="aspect-[0.96] object-contain w-[27px] shrink-0"
-          alt="Logo icon"
+          src="/lovable-uploads/151772f3-bf5d-4b20-b5d6-6ec098eb2609.png"
+          className="h-8 object-contain"
+          alt="prodejhudbu.cz logo"
         />
       </div>
       <nav className="self-stretch flex min-w-60 items-center gap-8 text-sm text-neutral-100 flex-wrap my-auto max-md:max-w-full">
