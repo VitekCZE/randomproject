@@ -35,10 +35,7 @@ export const Hero: React.FC = () => {
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,1)]"></div>
         
-        {/* New fade-out gradient overlay - positioned above background but below content */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,0.8)] via-[rgba(29,29,27,0.3)] to-transparent z-[1]"></div>
-        
-        {/* Animated diagonal stripes overlay with blur effect */}
+        {/* Animated diagonal stripes overlay with blur effect - now with z-index below fade-out gradient */}
         <div className={`absolute inset-0 overflow-hidden ${
           imageLoaded ? "opacity-40" : "opacity-0"
         } transition-opacity duration-1000 z-[1]`}>
@@ -55,6 +52,9 @@ export const Hero: React.FC = () => {
             ))}
           </div>
         </div>
+        
+        {/* New fade-out gradient overlay - now positioned ABOVE the stripes with higher z-index */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,0.8)] via-[rgba(29,29,27,0.3)] to-transparent z-[2]"></div>
       </div>
       <div className="container mx-auto h-full relative z-10">
         <div className={`absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8 transition-all duration-1000 delay-500 ease-out ${
