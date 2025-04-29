@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
 
   return (
     <header 
-      className={`fixed z-50 w-full flex items-center justify-between flex-wrap px-20 py-8 transition-all duration-300 ease-in-out ${
+      className={`fixed z-50 w-full flex items-center justify-between flex-wrap px-20 py-8 transition-all duration-300 ease-in-out font-atyp ${
         scrolled 
           ? "bg-[rgba(29,29,27,0.95)] backdrop-blur-sm shadow-lg py-4" 
           : "bg-transparent"
