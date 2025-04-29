@@ -13,81 +13,61 @@ export const Hero: React.FC = () => {
       setImageLoaded(true);
     }, 300);
 
-    // Set visibility for animation
+    // Add scroll animation
     setIsVisible(true);
   }, []);
 
   return (
     <section 
       ref={heroRef} 
-      className="relative z-0 w-full h-screen overflow-hidden"
+      className={`relative z-0 max-w-full w-full h-screen min-h-[700px] pt-24 transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
     >
-      {/* Dynamic Visual Background Layer */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Background Image with blur effect and reduced opacity */}
-        <div className="absolute inset-0 bg-[rgba(29,29,27,1)] opacity-50">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/4edd626cfeaebb1084cc0a8794214d5ab7909ac6?placeholderIfAbsent=true"
-            className="w-full h-full object-cover blur-sm opacity-70"
-            alt="Hero background"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/94fc374a9fa94560817364a268f955ee/4edd626cfeaebb1084cc0a8794214d5ab7909ac6?placeholderIfAbsent=true"
+          className="w-full h-full object-cover"
+          alt="Hero background"
+          onLoad={() => setImageLoaded(true)}
+        />
         
-        {/* Animated Background Element */}
-        <div 
-          className={`absolute inset-0 bg-gradient-to-b from-[rgba(45,175,229,0.1)] to-[rgba(150,195,85,0.1)] overflow-hidden transition-opacity duration-1000 ${
-            imageLoaded ? 'opacity-50' : 'opacity-0'
-          }`}
-        >
-          {/* Dynamic particles or shapes could be added here */}
-          <div className="absolute top-0 left-0 w-full h-full">
-            {/* Animated elements */}
-            {[...Array(5)].map((_, i) => (
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-[rgba(29,29,27,0.9)]"></div>
+        
+        {/* Animated diagonal stripes overlay - mirrored horizontally */}
+        <div className={`absolute inset-0 overflow-hidden ${
+          imageLoaded ? "opacity-30" : "opacity-0"
+        } transition-opacity duration-1000`}>
+          <div className="absolute top-0 right-0 w-[200%] h-[200%] -rotate-45 origin-top-right">
+            {[...Array(4)].map((_, i) => (
               <div 
                 key={i} 
-                className="absolute rounded-full bg-white/10 backdrop-blur-md animate-pulse-glow"
+                className={`absolute h-[100px] bg-white w-full transform translate-y-[-100%] animate-stripe-slide`} 
                 style={{
-                  width: `${Math.random() * 200 + 100}px`,
-                  height: `${Math.random() * 200 + 100}px`,
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${i * 0.7}s`,
-                  opacity: 0.3,
+                  top: `${i * 250}px`,
+                  animationDelay: `${i * 0.2}s`,
                 }}
               />
             ))}
           </div>
         </div>
-        
-        {/* Fade-out Overlay - From bottom to midpoint */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,0.95)] via-[rgba(29,29,27,0.7)] to-transparent"></div>
       </div>
-
-      {/* Text Layer - Always on top and readable */}
-      <div className="container relative z-10 h-full mx-auto px-8 flex flex-col justify-center items-center">
-        <div className={`max-w-[800px] text-center transition-all duration-1000 ${
+      <div className="container mx-auto h-full relative z-10">
+        <div className={`absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8 transition-all duration-1000 delay-500 ease-out ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
-          {/* Main Headline */}
-          <h1 className="text-neutral-100 text-5xl md:text-6xl lg:text-[75px] font-bold leading-tight tracking-[-1.13px] mb-6">
+          <h1 className="text-neutral-100 text-[75px] font-[612] leading-[75px] tracking-[-1.13px] max-md:max-w-full max-md:text-[40px] max-md:leading-[44px]">
             Prodávejte svou hudbu digitálně po celém světě!
           </h1>
-          
-          {/* Subheadline */}
-          <p className="text-neutral-100/90 text-xl md:text-2xl mb-10">
-            Jednoduchý způsob, jak dostat svou hudbu do celého světa
-          </p>
-          
-          {/* Call to action */}
-          <div className="flex flex-col items-center">
+          <div className="flex w-full flex-col items-stretch text-neutral-100 leading-[1.1] mt-10 max-md:max-w-full">
             <CustomButton
               variant="large"
-              className="border-neutral-100 border-2 text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
+              className="border-neutral-100 border text-neutral-100 hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors w-fit"
             >
               Spustit prodej
             </CustomButton>
-            <div className="text-neutral-100/80 text-sm font-normal mt-4">
+            <div className="text-sm font-normal mt-4 max-md:max-w-full">
               Zdarma a bez poplatků
             </div>
           </div>
