@@ -126,14 +126,7 @@ export const Header: React.FC = () => {
             >
               FAQ a nápověda
             </Link>
-            <Link
-              to="#contacts"
-              className="w-full text-center py-4 text-neutral-100 hover:text-[rgba(45,175,229,1)] transition-colors"
-              onClick={toggleMenu}
-            >
-              Kontakty
-            </Link>
-            {/* Removed Klientská zóna button from here */}
+            {/* Contacts link removed */}
           </div>
         </nav>
       </div>
