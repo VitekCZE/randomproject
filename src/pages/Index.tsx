@@ -61,11 +61,9 @@ const Index: React.FC = () => {
           <LogoGrid />
         </div>
 
+        <Testimonials />
+        
         <ArtistGrid />
-
-        <div className="container mx-auto relative px-8 py-24 mb-12">
-          <Testimonials />
-        </div>
 
         <ContactStrip />
 
