@@ -42,7 +42,7 @@ export const ArtistGrid: React.FC = () => {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
       }`}
     >
-      <div className="container mx-auto">
+      <div className="w-full">
         <h2 className={`text-neutral-100 text-[57px] font-[612] leading-[57px] tracking-[-0.85px] text-center self-center w-[846px] max-w-full mx-auto mb-20 max-md:mb-12 max-md:text-[40px] max-md:leading-[45px] transition-all duration-700 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}>
