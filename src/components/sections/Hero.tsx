@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { CustomButton } from "@/components/ui/CustomButton";
 
@@ -53,8 +52,8 @@ export const Hero: React.FC = () => {
           </div>
         </div>
         
-        {/* New fade-out gradient overlay - now positioned ABOVE the stripes with higher z-index */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,0.8)] via-[rgba(29,29,27,0.3)] to-transparent z-[2]"></div>
+        {/* Updated fade-out gradient overlay - with 100% opacity at the bottom */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(29,29,27,1)] via-[rgba(29,29,27,0.3)] to-transparent z-[2]"></div>
       </div>
       <div className="container mx-auto h-full relative z-10">
         <div className={`absolute z-0 w-[630px] max-w-full left-[134px] bottom-[177px] px-8 transition-all duration-1000 delay-500 ease-out ${
