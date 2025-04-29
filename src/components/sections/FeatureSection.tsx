@@ -61,7 +61,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   // Create the content and text components that will be positioned based on imagePosition
   const imageContent = (
     <div
-      className={`transition-all duration-1000 ease-out ${
+      className={`flex-1 min-w-[400px] max-w-[550px] transition-all duration-1000 ease-out ${
         isVisible ? "opacity-100 translate-x-0" : imagePosition === "left" ? "opacity-0 -translate-x-10" : "opacity-0 translate-x-10"
       }`}
     >
@@ -71,7 +71,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
 
   const textContent = (
     <div 
-      className={`self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] w-full my-auto px-8 transition-all duration-1000 ease-out ${
+      className={`flex-1 min-w-[300px] max-w-[500px] flex flex-col items-start text-neutral-100 font-[612] my-auto px-8 transition-all duration-1000 ease-out ${
         isVisible
           ? "opacity-100 translate-x-0"
           : imagePosition === "left" ? "opacity-0 translate-x-10" : "opacity-0 -translate-x-10"
@@ -99,7 +99,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     <section
       ref={sectionRef}
       id={id}
-      className={`z-0 flex w-full max-w-[1177px] items-center py-24 max-md:py-16 mb-12 mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
+      className={`z-0 flex w-full max-w-[1177px] gap-8 justify-between items-center py-24 max-md:py-16 mb-12 mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"} max-md:flex-col`}
     >
       {imagePosition === "left" ? (
         <>
