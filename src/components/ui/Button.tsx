@@ -1,3 +1,4 @@
+
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -15,15 +16,15 @@ export const Button: React.FC<ButtonProps> = ({
   color,
   ...props
 }) => {
-  const baseStyles = "font-semibold";
+  const baseStyles = "font-semibold transition-all duration-300";
 
   const variantStyles = {
     large:
-      "border-neutral-100 border gap-2.5 text-lg tracking-[0.36px] px-10 py-5 border-solid max-md:px-5",
+      "border-neutral-100 border text-lg tracking-[0.36px] px-8 py-4 border-solid",
     medium:
-      "gap-4 text-sm tracking-[0.28px] leading-[1.1] px-8 py-4 max-md:px-5",
+      "text-sm tracking-[0.28px] leading-[1.1] px-6 py-3",
     "large-white":
-      "bg-neutral-100 gap-2.5 text-lg tracking-[0.36px] leading-[1.1] px-10 py-5 max-md:px-5",
+      "bg-neutral-100 text-lg tracking-[0.36px] leading-[1.1] px-8 py-4",
   };
 
   const colorStyle = color ? { color } : {};
@@ -37,4 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
+};
+
+// Export the buttonVariants object for use in other components
+export const buttonVariants = (props?: { variant?: string }) => {
+  return "font-semibold transition-all duration-300 px-6 py-3";
 };

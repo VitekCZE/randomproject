@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Button } from "@/components/ui/Button";
 
@@ -19,7 +20,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   id,
 }) => {
   const textContent = (
-    <div className="self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] flex-1 shrink basis-[0%] my-auto max-md:max-w-full">
+    <div className="self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] flex-1 shrink basis-[0%] my-auto px-8 max-md:max-w-full">
       <h2
         className="text-[43px] leading-[43px] max-md:max-w-full"
         style={{ color: titleColor }}
@@ -41,7 +42,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   return (
     <section
       id={id}
-      className="z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap mt-12 max-md:mt-10"
+      className="z-0 flex w-full max-w-[1177px] items-center gap-[40px_128px] flex-wrap py-24 max-md:py-16"
     >
       {imagePosition === "left" ? (
         <>
