@@ -58,54 +58,59 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
     }
   };
 
+  // Create the content and text components that will be positioned based on imagePosition
+  const imageContent = (
+    <div
+      className={`transition-all duration-1000 ease-out ${
+        isVisible ? "opacity-100 translate-x-0" : imagePosition === "left" ? "opacity-0 -translate-x-10" : "opacity-0 translate-x-10"
+      }`}
+    >
+      {renderContent()}
+    </div>
+  );
+
+  const textContent = (
+    <div 
+      className={`self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] w-full my-auto px-8 transition-all duration-1000 ease-out ${
+        isVisible
+          ? "opacity-100 translate-x-0"
+          : imagePosition === "left" ? "opacity-0 translate-x-10" : "opacity-0 -translate-x-10"
+      } max-md:max-w-full`}
+    >
+      <h2
+        className="text-[43px] leading-[43px] max-md:max-w-full"
+        style={{ color: titleColor }}
+      >
+        {title}
+      </h2>
+      <p className="text-lg font-normal leading-[25px] mt-8 max-md:max-w-full">
+        {description}
+      </p>
+      <CustomButton
+        variant="medium"
+        className="border-neutral-100 border text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
+      >
+        Více informací
+      </CustomButton>
+    </div>
+  );
+
   return (
     <section
       ref={sectionRef}
       id={id}
       className={`z-0 flex w-full max-w-[1177px] items-center py-24 max-md:py-16 mb-12 mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`}
     >
-      {imagePosition === "left" && (
-        <div
-          className={`transition-all duration-1000 ease-out ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-          }`}
-        >
-          {renderContent()}
-        </div>
-      )}
-      
-      <div 
-        className={`self-stretch flex min-w-60 flex-col items-stretch text-neutral-100 font-[612] w-full my-auto px-8 transition-all duration-1000 ease-out ${
-          isVisible
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 -translate-x-10"
-        } max-md:max-w-full`}
-      >
-        <h2
-          className="text-[43px] leading-[43px] max-md:max-w-full"
-          style={{ color: titleColor }}
-        >
-          {title}
-        </h2>
-        <p className="text-lg font-normal leading-[25px] mt-8 max-md:max-w-full">
-          {description}
-        </p>
-        <CustomButton
-          variant="medium"
-          className="border-neutral-100 border text-neutral-100 mt-8 w-fit hover:bg-neutral-100 hover:text-[rgba(29,29,27,1)] transition-colors"
-        >
-          Více informací
-        </CustomButton>
-      </div>
-
-      {imagePosition === "right" && (
-        <div
-          className={`transition-all duration-1000 ease-out ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          }`}
-        >
-          {renderContent()}
-        </div>
+      {imagePosition === "left" ? (
+        <>
+          {imageContent}
+          {textContent}
+        </>
+      ) : (
+        <>
+          {textContent}
+          {imageContent}
+        </>
       )}
     </section>
   );
