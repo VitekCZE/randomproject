@@ -94,6 +94,18 @@ export default {
 					'0%': { opacity: '0', transform: 'translateY(10px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(30px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-in-right': {
+					'0%': { opacity: '0', transform: 'translateX(30px)' },
+					'100%': { opacity: '1', transform: 'translateX(0)' }
+				},
+				'bounce-light': {
+					'0%, 100%': { transform: 'translateY(0) scale(1.05)' },
+					'50%': { transform: 'translateY(-10px) scale(1.05)' }
+				},
 				'pulse-glow': {
 					'0%, 100%': { 
 						opacity: '1',
@@ -134,10 +146,16 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'carousel': 'carousel 30s linear infinite',
 				'fade-in': 'fade-in 0.5s ease-out',
+				'slide-up': 'slide-up 0.6s ease-out',
+				'slide-in-right': 'slide-in-right 0.6s ease-out',
+				'bounce-light': 'bounce-light 2s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 3s infinite',
 				'stripe-slide': 'stripe-slide 2s cubic-bezier(0.65, 0, 0.35, 1) forwards',
 				'rotate-circle': 'rotate-circle 60s linear infinite',
 				'icon-pop': 'icon-pop 0.5s ease-out'
+			},
+			boxShadow: {
+				'glow': '0 0 8px rgba(45, 175, 229, 0.6)'
 			}
 		}
 	},
@@ -150,6 +168,9 @@ export default {
 				},
 				'.bg-gradient-radial': {
 					'background-image': 'radial-gradient(var(--tw-gradient-stops))',
+				},
+				'.shadow-glow': {
+					'box-shadow': '0 0 8px rgba(45, 175, 229, 0.6)',
 				},
 			}
 			addUtilities(utilities)

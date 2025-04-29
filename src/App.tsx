@@ -19,6 +19,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/jak-to-funguje" element={<HowItWorks />} />
+          <Route path="/faq" element={<NotFound />} /> {/* Placeholder for FAQ page */}
+          <Route path="/contacts" element={<NotFound />} /> {/* Placeholder for Contacts page */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
